@@ -89,7 +89,7 @@ const config = {
         IBMPlexSans: ["var(--font-ibm-plex-sans)"],
       },
       backgroundImage: {
-        "purple-gradient": "url('/assets/images/gradient-bg.svg')",
+        gradient: "url('/assets/images/gradient-bg.svg')",
         banner: "url('/assets/images/banner-bg.png')",
       },
       height: {
