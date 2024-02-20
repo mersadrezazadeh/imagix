@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import Providers from "./providers";
 
 const IBMPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
@@ -24,7 +25,7 @@ function RootLayout({
       <body
         className={cn("font-IBMPlexSans antialiased", IBMPlexSans.variable)}
       >
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

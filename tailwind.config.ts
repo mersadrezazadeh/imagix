@@ -52,7 +52,7 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        purple: {
+        brand: {
           100: "#F4F7FE",
           200: "#BCB6FF",
           400: "#868CFF",
@@ -91,6 +91,9 @@ const config = {
       backgroundImage: {
         "purple-gradient": "url('/assets/images/gradient-bg.svg')",
         banner: "url('/assets/images/banner-bg.png')",
+      },
+      height: {
+        screen: "100dvh",
       },
     },
   },
