@@ -1,10 +1,11 @@
 "use client";
 
 import { NavLinks } from "@/constants";
-import { SignedIn } from "@clerk/nextjs";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Button } from "../ui/button";
 
 function Sidebar() {
   const pathname = usePathname();
@@ -47,8 +48,17 @@ function Sidebar() {
                   </li>
                 );
               })}
+              <li className="cursor-pointer gap-2 p-4">
+                <UserButton afterSignOutUrl="/" showName />
+              </li>
             </ul>
           </SignedIn>
+
+          <SignedOut>
+            <Button asChild className="bg-gradient bg-cover">
+              <Link href="/sign-in">Login</Link>
+            </Button>
+          </SignedOut>
         </nav>
       </div>
     </aside>
