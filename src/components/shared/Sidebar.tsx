@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "../ui/button";
+import Logo from "./Logo";
 
 function Sidebar() {
   const pathname = usePathname();
@@ -13,14 +14,8 @@ function Sidebar() {
   return (
     <aside className="hidden min-h-screen w-72 bg-white p-5 shadow-md shadow-purple-200/50 lg:flex">
       <div className="flex size-full flex-col gap-4">
-        <Link href="/" className="flex justify-center md:py-2">
-          <Image
-            src="/assets/images/logoipsum.svg"
-            alt="logo"
-            width={180}
-            height={28}
-          />
-        </Link>
+        <Logo />
+
         <nav className="h-full flex-col justify-between md:flex md:gap-4">
           <SignedIn>
             <ul className="hidden w-full flex-col gap-2 md:flex">
@@ -82,7 +77,10 @@ function Sidebar() {
           </SignedIn>
 
           <SignedOut>
-            <Button asChild className="bg-gradient bg-cover">
+            <Button
+              asChild
+              className="flex items-center justify-center rounded-full bg-gradient bg-cover px-6 py-4 font-semibold focus-visible:ring-transparent focus-visible:ring-offset-0"
+            >
               <Link href="/sign-in">Login</Link>
             </Button>
           </SignedOut>
