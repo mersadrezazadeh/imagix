@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import User from "../database/models/user.model";
 import { connectToDatabase } from "../database/mogoose";
+import { handleError } from "../utils";
 
 // Create
 export async function createUser(user: CreateUserParams) {
@@ -12,7 +13,9 @@ export async function createUser(user: CreateUserParams) {
     const newUser = await User.create(user);
 
     return JSON.parse(JSON.stringify(newUser));
-  } catch (err) {}
+  } catch (err) {
+    handleError(err);
+  }
 }
 
 // Read
@@ -25,7 +28,9 @@ export async function getUser(clerkId: string) {
     if (!user) throw new Error("User not found");
 
     return JSON.parse(JSON.stringify(user));
-  } catch (err) {}
+  } catch (err) {
+    handleError(err);
+  }
 }
 
 // Update
@@ -40,7 +45,9 @@ export async function UpdateUser(clerkId: string, user: UpdateUserParams) {
     if (!updatedUser) throw new Error("User could not update");
 
     return JSON.parse(JSON.stringify(updatedUser));
-  } catch (err) {}
+  } catch (err) {
+    handleError(err);
+  }
 }
 
 // Delete
@@ -58,7 +65,9 @@ export async function deleteUser(clerkId: string) {
     revalidatePath("/");
 
     return deletedUser ? JSON.parse(JSON.stringify(deletedUser)) : null;
-  } catch (err) {}
+  } catch (err) {
+    handleError(err);
+  }
 }
 
 // Update credits
@@ -75,5 +84,7 @@ export async function updateCredits(userId: string, creditFee: number) {
     if (!updatedUserCredits) throw new Error("User credits could not update");
 
     return JSON.parse(JSON.stringify(updatedUserCredits));
-  } catch (err) {}
+  } catch (err) {
+    handleError(err);
+  }
 }
